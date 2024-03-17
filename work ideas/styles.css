@@ -1,0 +1,201 @@
+/* Style file for the website and spacing(padding) 
+
+RAYMOND DONT FOR GET TO COMMENT ON THE CSS
+*/
+head{
+    margin-top: 0px;
+    padding: 0px;
+}
+body {
+    background-image: url('./images/back.PNG');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    color: #FFFFFF;
+    padding: 0px;
+    margin:0px;
+    margin-top: 150px; /* Adjust margin-top to accommodate navbar height */
+}
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgb(0, 61, 100);
+    color: white; /* Text color for footer text */
+    padding: 20px; /* padding*/
+  }
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(0, 61, 100);
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+  
+  li {
+    float: left;
+}
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+  
+  li a:hover {
+    background-color: #111;
+}
+
+.navbar {
+    background-color: rgb(0, 61, 100); /* Background color for the navbar */
+    padding: 10px; /* navbar padding */
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center items vertically */
+}
+
+.logo {
+    width: 100px; /* Set width of the logo */
+    height: 100px; /* Set height of the logo */
+    background-image: url('./images/logo.png'); /* Set background image for the logo */
+    background-size: contain; /* Ensure the background image fits within the div */
+    background-repeat: no-repeat; /* Prevent the background image from repeating */
+    display: block; /* Ensure the image behaves as a block element */
+    max-width: 100%; /* Ensure the image does not exceed the width of its container */
+    height: auto; /* Maintain the aspect ratio of the image */
+}
+
+section {
+    background-color: rgb(255, 255, 255);
+    margin: 80px;
+    padding-right: 100px; /* Apply padding to gallery divs */
+    padding-left: 100px; /* Apply padding to gallery divs */
+  }
+
+.section1 {
+    background-color: rgb(255, 255, 255);
+    margin: 80px;
+    padding-right: 100px; /* Apply padding to gallery divs */
+    padding-left: 100px; /* Apply padding to gallery divs */
+}
+
+#list-container {
+    width: 700px; /* Adjust as needed */
+    height: 40px; /* Adjust as needed */
+    overflow-y: scroll; /* Enable vertical scrollbar */
+}
+
+.box {
+    width: 50px; /* Adjust the width of each box as needed */
+    height: 50px; /* Adjust the height of each box as needed */
+    border: 1px solid #ccc; /* Add border to each box */
+    margin: 5px; /* Add margin around each box */
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+}
+
+div {
+    border: 1px solid black;
+    background-color:rgb(255, 255, 255);
+    padding-top: 600px;
+    padding-bottom: 50px;
+}
+
+
+.div2 {
+    width: 600px;
+    height: 450px;  
+    padding: 50px;
+    border: 1px solid red;
+  }
+
+div.gallery {
+    border: 1px solid black; /* Apply border to gallery divs */
+    background-color: rgb(255, 255, 255); /* Apply background color to gallery divs */
+    padding-top: 0px; /* Apply padding to gallery divs */
+    padding-right: 0px; /* Apply padding to gallery divs */
+    padding-bottom: 50px; /* Apply padding to gallery divs */
+    margin: 5px;
+    float: left;
+    width: calc(50% - 30px); /* Two slots per row with 5px margin on each side */
+    box-sizing: border-box; /* Include border and padding in the width calculation */
+    position: relative; /* Set the container as a relative positioning context */
+    text-align: center; /* Center the contents horizontally */
+}
+
+div.gallery:nth-child(2n+1) {
+    clear: left; /* Clear the float after every second item to start a new row */
+}
+
+div.gallery:hover {
+    border: 1px solid #777;
+}
+
+div.gallery img {
+    width: auto;
+    height: auto;
+    max-width: 100%; /* Ensure image does not exceed container width */
+    max-height: 200px; /* Set maximum height for all images */
+    object-fit: cover; /* Maintain aspect ratio while filling the container */
+}
+
+div.desc {
+    position: absolute; /* Position the description absolutely */
+    bottom: 0; /* Align the description to the bottom of the container */
+    width: 100%; /* Ensure the description spans the entire width of the container */
+    padding: 15px;
+    box-sizing: border-box; /* Include padding in the width calculation */
+    background-color: rgba(0, 0, 0, 0.5); /* Add a background color to improve readability */
+    color: white; /* Set text color to white for contrast */
+}
+
+.button {background-color: #e7e7e7; color: black;} /* Gray */ 
+
+
+/* Add your CSS styles here */
+#searchInput, #filterSelect {
+    margin-bottom: 10px;
+  }
+  
+  #dataTable {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: rgba(59, 55, 55, 0.9); /* Adjust the color and opacity as needed */
+  }
+  
+  #dataTable th, #dataTable td {
+    border: 1px solid #030303;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  #dataTable th {
+    background-color: #000000;
+  }
+  
+  #dataTable tr:hover {
+    background-color: #797070;
+  }
+  /* Add your CSS styles here */
+.arrow {
+    display: inline-block;
+    margin-left: 5px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+  }
+  
+  .arrow.up {
+    border-bottom: 5px solid red;
+  }
+  
+  .arrow.down {
+    border-top: 5px solid red;
+  }
