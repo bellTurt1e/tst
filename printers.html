@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+  
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+<title>Printers</title>
+<link rel="icon" href="./images/logo.png" type="image/png">
+<link rel="stylesheet" href="styles.css">
+<ul>
+    <li><img src="./images/logo.png" alt="Logo" class="logo"></li>
+</ul>
+</head>
+<body>
+    
+    <input type="text" id="searchInput" placeholder="Search...">
+    Location Filter
+    <select id="filterSelect">
+      <option value="all">All</option>
+      <option value="GHY">GHY</option>
+      <option value="ZXY">ZXY</option>
+      <option value="ABC">ABC</option>
+      <!-- Add more filter options as needed -->
+    </select>
+    <table id="dataTable">
+      <thead>
+        <tr>
+            <th onclick="sortTable(0)">Printer Name<span id="arrow1"></span></th>
+            <th onclick="sortTable(1)">Location<span id="arrow2"></span></th>
+            <th onclick="sortTable(2)">Download<span id="arrow3"></span></th>
+          <!-- Add more table columns as needed -->
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Table rows will be dynamically populated here -->
+      </tbody>
+    </table>
+<script>
+
+    // Sample data (Replace with your actual data)
+const data = [
+  { column1: "DBH-Rand-p123", column2: "GHY", column3: "./images/logo.png" },
+  { column1: "DBH-Rand-p256", column2: "GHY", column3: "./images/logo.png" },
+  { column1: "DBH-Rand-p334", column2: "GHY", column3: "./images/logo.png" },
+  { column1: "DBH-ZXY-p1141", column2: "ZXY", column3: "./images/logo.png" },
+  { column1: "DBH-ZXY-p252", column2: "ZXY", column3: "./images/logo.png" },
+  { column1: "DBH-ZXY-p04523", column2: "ZXY", column3: "./images/logo.png"},
+  { column1: "DBH-ABC-p17567", column2: "ABC", column3: "./images/logo.png" },
+  { column1: "DBH-ABC-p245", column2: "ABC", column3: "./images/logo.png" },
+  { column1: "DBH-ABC-p04", column2: "ABC", column3: "./images/logo.png"},
+  // Add more data objects as needed
+];
+
+// Function to populate the table with data
+function populateTable() {
+  const dataTable = document.getElementById("dataTable");
+  const tbody = dataTable.querySelector("tbody");
+  tbody.innerHTML = ""; // Clear existing table rows
+
+  data.forEach(item => {
+    console.log("Item:", item);
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${item.column1}</td>
+      <td>${item.column2}</td>
+      <td><a href="${item.column3}" download>Download</a></td>
+      <!-- Add more table columns as needed -->
+    `;
+    console.log("Row:", row);
+    tbody.appendChild(row);
+  });
+}
+
+// Function to handle search input
+function handleSearch() {
+  const searchValue = document.getElementById("searchInput").value.toLowerCase();
+  const filteredData = data.filter(item =>
+    item.column1.toLowerCase().includes(searchValue) ||
+    item.column2.toLowerCase().includes(searchValue) ||
+    item.column3.toLowerCase().includes(searchValue)
+    // Add more columns to search in as needed
+  );
+  renderTable(filteredData);
+}
+
+// Function to handle filter select
+function handleFilter() {
+  // Get the value of the selected option in the filter dropdown
+  const filterValue = document.getElementById("filterSelect").value;
+
+  // Check if the selected option is "all"
+  if (filterValue === "all") {
+    // If "all" is selected, render the table with the original data
+    renderTable(data);
+  } else {
+    // If a specific option is selected, filter the data based on the selected option
+    const filteredData = data.filter(item => item.column2 === filterValue);
+    // Render the table with the filtered data
+    renderTable(filteredData);
+  }
+}
+
+// Function to render the table with provided data
+function renderTable(data) {
+  const tbody = document.getElementById("dataTable").querySelector("tbody");
+  tbody.innerHTML = ""; // Clear existing table rows
+
+  data.forEach(item => {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${item.column1}</td>
+      <td>${item.column2}</td>
+      <td><a href="${item.column3}" download>Download</a></td>
+      <!-- Add more table columns as needed -->
+    `;
+    tbody.appendChild(row);
+  });
+}
+
+
+// Populate table initially
+populateTable();
+
+// Add event listeners for search input and filter select
+document.getElementById("searchInput").addEventListener("input", handleSearch);
+document.getElementById("filterSelect").addEventListener("change", handleFilter);
+
+// Flag to keep track of sort order
+let ascending = true;
+
+// Function to sort the table based on the specified column index
+function sortTable(columnIndex) {
+  const table = document.getElementById("dataTable");
+  const rows = Array.from(table.querySelectorAll("tbody tr"));
+  const arrowElement = document.getElementById(`arrow${columnIndex + 1}`);
+
+  rows.sort((a, b) => {
+    const valueA = a.cells[columnIndex].textContent.trim().toLowerCase();
+    const valueB = b.cells[columnIndex].textContent.trim().toLowerCase();
+    return valueA.localeCompare(valueB);
+  });
+
+  if (!ascending) {
+    rows.reverse();
+    arrowElement.classList.remove("up");
+    arrowElement.classList.add("down");
+  } else {
+    arrowElement.classList.remove("down");
+    arrowElement.classList.add("up");
+  }
+
+  ascending = !ascending;
+
+  // Re-append rows to the table body in the sorted order
+  const tbody = table.querySelector("tbody");
+  tbody.innerHTML = "";
+  rows.forEach(row => tbody.appendChild(row));
+}
+</script>
+<footer>
+
+</footer>
+</body>
+</html>
